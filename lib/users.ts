@@ -1,4 +1,9 @@
 import { z } from "zod";
+import dataJSON from "../users.json";
+import * as d3 from "d3-dsv";
+import { fetchUsersCSV } from "../helpers/fetchUsersCSV";
+import { parseUsersFromJSON } from "../helpers/parseUsersFromJSON";
+import { parseUsersFromCSV } from "../helpers/parseUsersFromCSV";
 
 const userSchema = z.object({
   fullName: z.string().min(2).max(50),
@@ -20,8 +25,15 @@ const userSchema = z.object({
   images: z.array(z.string().url()),
 });
 
-type User = z.infer<typeof userSchema>;
+export type User = z.infer<typeof userSchema>;
 
 export async function getAllUsers(): Promise<User[]> {
-  return [];
+  const usersCSVString = await fetchUsersCSV("/users.csv");
+
+  const usersCSV = parseUsersFromCSV(usersCSVString);
+  const usersJSON = parseUsersFromJSON(dataJSON);
+
+  return usersJSON
+    .concat(usersCSV)
+    .filter((user) => user.age >= 18 && user.age <= 65);
 }
