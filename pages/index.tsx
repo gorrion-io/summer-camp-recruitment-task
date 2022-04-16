@@ -5,11 +5,6 @@ import { getAllUsers } from "../lib/users";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const clickHandler = async () => {
-    const users = await getAllUsers();
-    console.log(users);
-  };
-
   return (
     <div className={styles.container}>
       <Head>
@@ -27,8 +22,6 @@ const Home: NextPage = () => {
           Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
-
-        <button onClick={clickHandler}>log JSON</button>
       </main>
     </div>
   );

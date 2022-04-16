@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import UserCard from "../components/UserCard/UserCard";
@@ -21,21 +22,28 @@ const Users: NextPage = () => {
   const [users, setUsers] = useState<User[] | null>(null);
 
   useEffect(() => {
-    const getUser = async () => {
+    const getUsers = async () => {
       const users = await getAllUsers();
       setUsers(users);
     };
 
-    getUser();
+    getUsers();
   }, []);
+
+  const pageContent = users ? (
+    users.map((user, i) => <UserCard key={i} {...user} />)
+  ) : (
+    <h1>Loading...</h1>
+  );
 
   return (
     <UserPage>
-      {users ? (
-        users.map((user) => <UserCard {...user} />)
-      ) : (
-        <h1>Loading...</h1>
-      )}
+      <Head>
+        <title>Users</title>
+        <meta name="description" content="Users page" />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      {pageContent}
     </UserPage>
   );
 };

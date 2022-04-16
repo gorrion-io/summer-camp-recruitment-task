@@ -10,7 +10,7 @@ const UserImages: FC<Props> = ({ images }) => {
   return (
     <UserImagesContainer>
       {images.map((src, index) => (
-        <ImageLink href={src} target="_blank">
+        <ImageLink key={index} href={src} target="_blank">
           Image {index + 1}
         </ImageLink>
       ))}

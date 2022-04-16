@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getAllUsers, User } from "../../lib/users";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse
 ) {
-  res.status(501).json({ message: "Not implemented" });
+  res.send({ message: "Not implemented" });
 }
