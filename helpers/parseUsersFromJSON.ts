@@ -35,13 +35,18 @@ export const parseUsersFromJSON = (dataJSON: userJSON[]): User[] => {
       age,
       imgs,
     }) => {
+      const streetName = user_address.street_address
+        .split(" ")
+        .slice(1)
+        .join(" ");
+
       users.push({
         fullName: full_name,
         username: nickname,
         email: email_address,
         avatar: user_image,
         address: {
-          street: user_address.street_address,
+          street: streetName,
           city: user_address.city.city_name,
           zip: user_address.city.city_zip_code,
         },

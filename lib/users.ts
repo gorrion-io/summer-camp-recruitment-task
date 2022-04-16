@@ -1,6 +1,5 @@
 import { z } from "zod";
 import dataJSON from "../users.json";
-import * as d3 from "d3-dsv";
 import { fetchUsersCSV } from "../helpers/fetchUsersCSV";
 import { parseUsersFromJSON } from "../helpers/parseUsersFromJSON";
 import { parseUsersFromCSV } from "../helpers/parseUsersFromCSV";
