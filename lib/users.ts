@@ -6,7 +6,6 @@ export const userSchema = z.object({
     .string()
     .min(2)
     .max(40)
-    // .regex(/^[a-zA-Z0-9_]+$/), // please see comments / questions below
     .regex(/^[a-zA-Z0-9_.]+$/),
   email: z.string().email(),
   avatar: z.string().url(),
@@ -22,17 +21,3 @@ export const userSchema = z.object({
 });
 
 export type User = z.infer<typeof userSchema>;
-
-// export async function getAllUsers(): Promise<User[]> {
-//   return [];
-// } // function not used - please see comments below.
-
-//********************************************************************************************************************************
-// Please see classes / methods in folder services. I've decided to split the logic into couple more files. I hope it's ok.
-//********************************************************************************************************************************
-// I've created some functions/classes to handle exceptions
-//********************************************************************************************************************************
-// I've implemented some basic DI
-//********************************************************************************************************************************
-// I don't know what to do with regex checking for usernames in zod. It seems like either this regex is wrong or usernames provided are not valid. This needs to be adressed later. For now I've corrected regex and added dot ('.') to match also usernames with dot.
-//********************************************************************************************************************************
