@@ -1,0 +1,26 @@
+.button {
+  height: 52px;
+  background: #6d6ef6;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  transition: background 0.3s;
+  flex: 1;
+}
+
+.button:hover {
+  background-color: #7676f5;
+  cursor: pointer;
+  background: #7676f5 radial-gradient(circle, transparent 1%, #7676f5 1%)
+    center/15000%;
+}
+.button:active {
+  background-color: #9595f6;
+  background-size: 100%;
+  transition: background 0s;
+}

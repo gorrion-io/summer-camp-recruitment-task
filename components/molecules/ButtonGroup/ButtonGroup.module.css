@@ -1,0 +1,10 @@
+.buttons_group {
+  height: 52px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;
+  gap: 1px;
+}

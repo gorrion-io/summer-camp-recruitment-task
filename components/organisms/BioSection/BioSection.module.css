@@ -1,0 +1,8 @@
+.bio_container {
+  display: grid;
+  max-width: 320px;
+  grid-template-rows: 66px 1fr;
+  grid-template-columns: 80px 1fr;
+  gap: 10px;
+  height: 100%;
+}

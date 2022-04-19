@@ -1,0 +1,13 @@
+.adress_title {
+  width: 288px;
+  height: 20px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+  margin: 0 0 0 16px;
+}

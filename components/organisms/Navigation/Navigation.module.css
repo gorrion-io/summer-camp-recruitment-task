@@ -1,0 +1,16 @@
+.arrow {
+  color: #6d6ef6;
+  font-size: 50px;
+  text-align: center;
+  border: none;
+  transition: color 0.3s;
+}
+
+.arrow:hover {
+  color: #7676f5;
+  cursor: pointer;
+}
+.arrow:active {
+  color: #9595f6;
+  transition: color 0s;
+}

@@ -1,8 +1,11 @@
 import { NextPage } from 'next';
-import { Key } from 'react';
+import { useState } from 'react';
 import useSWR from 'swr';
 import { User } from '../lib/users';
 import styles from '../styles/users.module.css';
+import { UserCard } from '../components/templates/UserCard/UserCard';
+import { Navigation } from '../components/organisms/Navigation/Navigation';
+import { Photo } from '../components/molecules/Photo/Photo';
 
 const fetcher = async (url: RequestInfo) => {
   const res = await fetch(url);
@@ -15,19 +18,41 @@ const fetcher = async (url: RequestInfo) => {
 };
 
 const Users: NextPage = () => {
-  const { data, error } = useSWR(() => `/api/users`, fetcher);
+  const { data, error } = useSWR<User[], Error>(() => `/api/users`, fetcher);
+  const [currIdx, setCurrIdx] = useState(0);
+  const [currPhoto, setCurrPhoto] = useState<string | null>(null);
 
   if (error) return <div>{error.message}</div>;
   if (!data) return <div>Loading...</div>;
 
+  const handleSetImage = (image: string) => {
+    setCurrPhoto(image);
+  };
+
+  const handlePrevPage = () => {
+    setCurrIdx((prev) => (prev - 1 < 0 ? 0 : prev - 1));
+  };
+  const handleNextPage = () => {
+    setCurrIdx((prev) => (prev + 1 === data.length ? prev : prev + 1));
+  };
+
+  const handleClosePhoto = () => {
+    setCurrPhoto(null);
+  };
+
   return (
-    <ul className={styles.container}>
-      {data.map((user: User, index: Key) => (
-        <li className={styles.user} key={index}>
-          {user.fullName} is {user.age} yo. His nickname is {user.username}
-        </li>
-      ))}
-    </ul>
+    <>
+      <div className={styles.container}>
+        <UserCard props={data[currIdx]} handleSetImage={handleSetImage} />
+        <Navigation
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      </div>
+      {currPhoto && (
+        <Photo currPhoto={currPhoto} handleClosePhoto={handleClosePhoto} />
+      )}
+    </>
   );
 };
 
