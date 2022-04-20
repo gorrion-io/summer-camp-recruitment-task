@@ -1,8 +1,11 @@
+/* container for buttons */
 .imgbox {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1px;
 }
+
+/* buttons styles */
 .imgbox button {
   color: #ffffff;
   background-color: #6d6ef6;

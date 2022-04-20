@@ -1,7 +1,9 @@
-import { collectAssets } from 'next/dist/build/webpack/plugins/middleware-plugin';
-import classes from './Layout.module.css';
+// features
 import Link from 'next/link';
+// styles
+import classes from './Layout.module.css';
 
+// main layout component
 const Layout = (props: any) => {
   return (
     <main className={classes.usercontainer}>

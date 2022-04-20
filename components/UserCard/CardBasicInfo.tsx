@@ -1,7 +1,11 @@
+// styles
 import classes from './CardBasicInfo.module.css';
+// type
 import { User } from '../../lib/users';
 
-const CardBasicInfo = ({ user }: any) => {
+// subcomponent, which displays basic info about user in UserCard
+
+const CardBasicInfo = ({ user }: { user: User }) => {
   return (
     <div className={classes.cardinfo}>
       <div className={classes.infoheader}>

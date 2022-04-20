@@ -1,13 +1,18 @@
+// features
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { Key } from 'react';
+// components
 import { User } from '../lib/users';
 import Layout from '../components/Layout/Layout';
 import UserCard from '../components/UserCard/UserCard';
+// styles
 import classes from '../components/Layout/Layout.module.css';
+// lib
 import { getAllUsers } from '../lib/users';
-import { Key } from 'react';
 
-const Users: NextPage = (props: any) => {
+// displaying users page
+const Users: NextPage<{ allUsers: User[] }> = (props: { allUsers: User[] }) => {
   return (
     <Layout>
       <Head>
@@ -26,7 +31,7 @@ const Users: NextPage = (props: any) => {
     </Layout>
   );
 };
-
+// fetching users
 export async function getStaticProps() {
   const allUsers = await getAllUsers();
 

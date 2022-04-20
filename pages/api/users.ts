@@ -1,5 +1,7 @@
+// features
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getAllUsers } from '../../lib/users';
+// lib
 import { User } from '../../lib/users';
 
 // get usersList API

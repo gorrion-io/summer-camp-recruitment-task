@@ -1,6 +1,10 @@
+// styles
 import classes from './CardAdressesInfo.module.css';
+//type
+import { User } from '../../lib/users';
 
-const CardAdressesInfo = ({ user }: any) => {
+// subcomponent, which displays user's adress section in UserCard
+const CardAdressesInfo = ({ user }: { user: User }) => {
   return (
     <div className={classes.adressbox}>
       <div className={classes.streetbox}>

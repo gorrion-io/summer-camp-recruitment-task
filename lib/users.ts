@@ -1,7 +1,9 @@
-import { z } from 'zod';
+//users.json import
 import usersFromJSON from '../users.json';
+// lib
 import csv from 'csvtojson';
 import moment from 'moment';
+import { z } from 'zod';
 
 // type of user in array
 

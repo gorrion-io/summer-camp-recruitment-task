@@ -1,14 +1,16 @@
+/* basic information about user style - container */
 .cardinfo {
   width: 100%;
   padding: 16px 16px 0px 16px;
 }
+/* user's avatar style */
 .avatar {
   height: 56px;
   width: 56px;
   border-radius: 50%;
   display: block;
 }
-
+/* basic information containers's style*/
 .infoheader {
   display: flex;
   align-items: flex-start;

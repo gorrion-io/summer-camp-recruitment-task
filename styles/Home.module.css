@@ -63,6 +63,7 @@
 }
 .buttons button:hover {
   cursor: pointer;
+  opacity: 0.95;
 }
 
 /* smaller screen design */

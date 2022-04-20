@@ -1,9 +1,11 @@
+/* main container style*/
 .usercontainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f6f6f6;
 }
+/* header styles */
 .header {
   background-color: #f6f6f6;
   padding: 1.5em 2em;
@@ -26,18 +28,7 @@
   opacity: 0.95;
   cursor: pointer;
 }
-.userlist {
-  display: flex;
-  list-style-type: none;
-  flex-wrap: wrap;
-  width: 1476px;
-  justify-content: flex-start;
-  background-color: white;
-  border-radius: 5px;
-}
-.userlist li {
-  margin: 6px;
-}
+/* Style of userlist */
 
 .describe {
   padding: 1.1em;
@@ -45,4 +36,55 @@
   letter-spacing: 2px;
   margin: 2em;
   border-bottom: 2px solid #6d6ef6;
+}
+
+.userlist {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  max-width: 1476px;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+}
+.userlist li {
+  margin: 6px;
+}
+
+/* last list's element position */
+
+@media screen and (min-width: 1476px) {
+  .userlist li:last-child {
+    margin-right: auto;
+  }
+}
+
+/* basic mobile design */
+
+@media screen and (max-width: 430px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .header button {
+    margin-top: 1em;
+    padding: 0.5em;
+  }
+  .describe {
+    padding: 0.5em;
+    font-size: 1.5rem;
+    margin: 1.5em;
+  }
+  .userlist {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .userlist li {
+    width: 100%;
+    margin: 6px 0px;
+  }
 }
