@@ -1,0 +1,48 @@
+.usercontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f6f6f6;
+}
+.header {
+  background-color: #f6f6f6;
+  padding: 1.5em 2em;
+  width: 100%;
+  border-bottom: 2px solid #6d6ef6;
+  box-shadow: 1px 1px 5px 2px #f0f0fd;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+.header button {
+  padding: 0.7em;
+  font-size: 1.2rem;
+  border: 1px solid #f0f0fd;
+  color: white;
+  background-color: #6d6ef6;
+  letter-spacing: 2px;
+}
+.header button:hover {
+  opacity: 0.95;
+  cursor: pointer;
+}
+.userlist {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  width: 1476px;
+  justify-content: flex-start;
+  background-color: white;
+  border-radius: 5px;
+}
+.userlist li {
+  margin: 6px;
+}
+
+.describe {
+  padding: 1.1em;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin: 2em;
+  border-bottom: 2px solid #6d6ef6;
+}

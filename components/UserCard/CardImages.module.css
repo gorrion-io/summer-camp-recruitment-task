@@ -13,3 +13,8 @@
   border: none;
   padding: 16px;
 }
+
+.imgbox button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
