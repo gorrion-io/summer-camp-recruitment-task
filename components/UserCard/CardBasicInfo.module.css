@@ -1,0 +1,61 @@
+.cardinfo {
+  width: 100%;
+  padding: 16px 16px 24px 16px;
+}
+.avatar {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  display: block;
+}
+
+.infoheader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.basicinfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6px;
+  margin-left: 16px;
+}
+.userfullname {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.useremail {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #888888;
+}
+.infoflexbox {
+  display: flex;
+  margin-top: 8px;
+}
+
+.usergender,
+.userage {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.usergender {
+  color: #065f46 !important;
+  background-color: #ecfdf5;
+  border: 1px solid #d1fae5;
+  margin-right: 8px;
+}
+.userage {
+  color: #303030 !important;
+  background-color: #f6f6f6;
+  border: 1px solid #e9e9e9;
+}

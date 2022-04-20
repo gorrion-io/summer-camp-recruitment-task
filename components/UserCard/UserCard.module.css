@@ -1,0 +1,32 @@
+/* Frame style */
+.cardframe {
+  width: 480px;
+  height: 552px;
+  padding: 80px;
+  background-color: #f0f0fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Public Sans', sans-serif;
+}
+/* Content box style */
+
+.cardbox {
+  width: 320px;
+  height: 392px;
+  background-color: #ffffff;
+  border: 1px solid #e6e6f8;
+  border-radius: 16px;
+  box-shadow: 0px 8px 16px 0px #30303029;
+  overflow: hidden;
+}
+
+/* Typography */
+
+.cardbox h4,
+.cardbox h5 {
+  color: #303030;
+}
+.cardbox p {
+  color: #888888;
+}
