@@ -1,0 +1,240 @@
+/* Compile using: npx sass styles/users.module.scss styles/users.module.css */
+.addressBoxSeparator, .addressBoxContent > h2, .addressBoxContent > h1, .addressBoxContent, .addressBox, .userAgeHolder > div, .userAgeHolder, .userSexHolder > div, .userSexHolder, .profileBoxInnerDivBottom, .profileBoxInnerDivTop > h2, .profileBoxInnerDivTop > h1, .profileBoxInnerDivTop, .profileBoxInnerDiv, .profileBox > img, .profileBox, .cardBody, .card {
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.addressBoxContent, .addressBox, .profileBoxInnerDivTop, .profileBoxInnerDiv, .cardBody, .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: static;
+}
+
+.userAgeHolder, .userSexHolder, .profileBoxInnerDivBottom, .profileBox {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: static;
+}
+
+.container {
+  background-color: #F0F0FD;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  padding: 0px;
+  width: 320px;
+  height: 392px;
+  background: #FFFFFF;
+  outline: 1px solid #E6E6F8;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
+  border-radius: 16px;
+  align-self: auto;
+}
+
+.cardBody {
+  padding: 16px 16px 24px;
+  width: 320px;
+  height: 340px;
+}
+
+.profileBox {
+  padding: 0px;
+  width: 288px;
+  height: 90px;
+  left: 16px;
+  top: 16px;
+}
+
+.profileBox > img {
+  position: static;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #E9E9E9;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.profileBoxInnerDiv {
+  justify-content: space-between;
+  padding: 6px 0px 0px;
+  width: 216px;
+  height: 90px;
+  left: 72px;
+  margin: 0px 16px;
+}
+
+.profileBoxInnerDivTop {
+  padding: 0px;
+  width: 216px;
+  height: 44px;
+  top: 6px;
+}
+
+.bottomButton > div, .addressBoxContent > h2, .addressBoxContent > h1, .userAgeHolder > div, .userSexHolder > div, .profileBoxInnerDivTop > h2, .profileBoxInnerDivTop > h1 {
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.profileBoxInnerDivTop > h1 {
+  position: static;
+  width: 216px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #303030;
+}
+
+.profileBoxInnerDivTop > h2 {
+  position: static;
+  width: 216px;
+  height: 20px;
+  top: 24px;
+  font-weight: 400;
+  color: #888888;
+}
+
+.profileBoxInnerDivBottom {
+  padding: 0px;
+  width: 111px;
+  height: 32px;
+  top: 58px;
+}
+
+.userAgeHolder, .userSexHolder {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.userSexHolder {
+  width: 62px;
+  background: #ECFDF5;
+  border: 1px solid #D1FAE5;
+}
+
+.userAgeHolder > div, .userSexHolder > div {
+  position: static;
+  height: 20px;
+  left: 12px;
+  top: 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.userSexHolder > div {
+  width: 38px;
+  color: #065F46;
+  align-self: center;
+}
+
+.userAgeHolder {
+  width: 41px;
+  background: #F6F6F6;
+  border: 1px solid #E9E9E9;
+  margin: 0px 8px;
+}
+
+.userAgeHolder > div {
+  width: 17px;
+  color: #303030;
+  align-self: center;
+}
+
+.addressBox {
+  padding: 0px;
+  width: 288px;
+  height: 186px;
+  left: 16px;
+  top: 130px;
+  margin: 24px 0px;
+}
+
+.addressBoxContent {
+  padding: 0px;
+  width: 288px;
+  height: 40px;
+}
+
+.addressBoxContent > h1 {
+  position: static;
+  width: 288px;
+  height: 20px;
+  font-size: 14px;
+  color: #303030;
+}
+
+.addressBoxContent > h2 {
+  position: static;
+  width: 288px;
+  height: 20px;
+  top: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+.addressBoxSeparator {
+  position: static;
+  width: 288px;
+  height: 1px;
+  background: #E9E9E9;
+  margin: 16px 0px;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  position: static;
+  width: 320px;
+  height: 52px;
+  left: 0px;
+  top: 340px;
+  background: #6D6EF6;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+  border-radius: 0px 0px 16px 16px;
+}
+
+.bottomButton {
+  padding: 16px;
+  width: 106px;
+  height: 52px;
+  margin: 0px 0px;
+}
+
+.bottomButtonSeparator {
+  width: 1px;
+  height: 52px;
+  background: #FFFFFF;
+}
+
+.bottomButton > div {
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=users.module.css.map */
