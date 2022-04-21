@@ -2,6 +2,10 @@ import { z } from "zod";
 import { readFileSync } from 'fs';
 import path from "path";
 
+const csvToObj = require('csv-to-js-parser').csvToObj;
+const ageCalculator = require('age-calculator');
+let {AgeFromDateString, AgeFromDate} = require('age-calculator');
+
 const userSchema = z.object({
   fullName: z.string().min(2).max(50),
   username: z
@@ -27,24 +31,30 @@ type User = z.infer<typeof userSchema>;
 export async function getAllUsers(): Promise<User[]> {
   const json_file = readFileSync(path.resolve(process.cwd(), 'users.json'), 'utf-8');
   const csv_file = readFileSync(path.resolve(process.cwd(), 'users.csv'), 'utf-8');
+  const array_of_objects = [...JSON.parse(json_file), ...csvToObj(csv_file.toString())];
 
   let users: User[] = [];
 
-  for (const item of JSON.parse(json_file)) {
+  for (const item of array_of_objects) {
     const itemNewBind = {
-      fullName: item.full_name,
-      username: item.nickname,
-      email: item.email_address,
-      avatar: item.user_image,
+      fullName: item.full_name || item.name,
+      username: item.nickname || item.username,
+      email: item.email_address || item.email,
+      avatar: item.user_image || item.avatar,
       address: {
-        street: item.user_address.street_address,
-        city: item.user_address.city.city_name,
-        zip: item.user_address.city.city_zip_code,
+        street: item.user_address?.street_address || item['address.street'],
+        city: item.user_address?.city.city_name || item['address.city'],
+        zip: item.user_address?.city.city_zip_code || item['address.zipcode'],
       },
-      phoneNumber: item.phone_number,
-      gender: item.gender,
-      age: item.age,
-      images: item.imgs,
+      phoneNumber: item.phone_number || item.phone,
+      gender: item.gender || item['bio.gender'],
+      age: item.age || new AgeFromDateString(item['bio.dob'].substring(0,10)).age,
+      images: item.imgs || [
+        item['imgs.0'],
+        item['imgs.1'],
+        item['imgs.2'],
+        item['imgs.3'],
+      ],
     }
 
     const user = userSchema.safeParse(itemNewBind);
