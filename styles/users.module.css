@@ -1,0 +1,365 @@
+.container {
+    background-color: #F0F0FD;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 320px;
+    height: 392px;
+    left: 80px;
+    top: 80px;
+    background: #FFFFFF;
+    border: 1px solid #E6E6F8;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
+    border-radius: 16px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 16px 24px;
+    position: static;
+    width: 320px;
+    height: 340px;
+    left: 0px;
+    top: 0px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.profileBox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 288px;
+    height: 90px;
+    left: 16px;
+    top: 16px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.profileBox > img {
+    position: static;
+    width: 56px;
+    height: 56px;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    border-radius: 50%;
+}
+
+.profileBoxInnerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 6px 0px 0px;
+    position: static;
+    width: 216px;
+    height: 90px;
+    left: 72px;
+    top: 0px;
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+    margin: 0px 16px;
+}
+
+.profileBoxInnerDivTop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 216px;
+    height: 44px;
+    left: 0px;
+    top: 6px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.profileBoxInnerDivTop > h1 {
+    position: static;
+    width: 216px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303030;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.profileBoxInnerDivTop > h2 {
+    position: static;
+    width: 216px;
+    height: 20px;
+    left: 0px;
+    top: 24px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #888888;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.profileBoxInnerDivBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 111px;
+    height: 32px;
+    left: 0px;
+    top: 58px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.userSexHolder {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px 12px;
+    position: static;
+    width: 62px;
+    height: 32px;
+    left: 0px;
+    top: 0px;
+    background: #ECFDF5;
+    border: 1px solid #D1FAE5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.userSexHolder > div {
+    position: static;
+    width: 38px;
+    height: 20px;
+    left: 12px;
+    top: 6px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #065F46;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.userAgeHolder {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px 12px;
+    position: static;
+    width: 41px;
+    height: 32px;
+    left: 70px;
+    top: 0px;
+    background: #F6F6F6;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 8px;
+}
+
+.userAgeHolder > div {
+    position: static;
+    width: 17px;
+    height: 20px;
+    left: 12px;
+    top: 6px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #303030;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.addressBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 288px;
+    height: 186px;
+    left: 16px;
+    top: 130px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 24px 0px;
+}
+
+.addressBoxContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 288px;
+    height: 40px;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.addressBoxContent > h1 {
+    position: static;
+    width: 288px;
+    height: 20px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #303030;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.addressBoxContent > h2 {
+    position: static;
+    width: 288px;
+    height: 20px;
+    left: 0px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888888;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.addressBoxSeparator {
+    position: static;
+    width: 288px;
+    height: 1px;
+    background: #E9E9E9;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+
+.cardBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: 320px;
+    height: 52px;
+    left: 0px;
+    top: 340px;
+    background: #6D6EF6;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+    border-radius: 0px 0px 16px 16px;
+}
+
+.bottomButton {
+    padding: 16px;
+    width: 106px;
+    height: 52px;
+    margin: 0px 0px;
+}
+
+.bottomButtonSeparator {
+    width: 1px;
+    height: 52px;
+    background: #FFFFFF;
+}
+
+.bottomButton > div {
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
