@@ -45,6 +45,9 @@
 .credentialsContainer{
     height: 90px;
     width: 100%;
+    display: inherit;
+    justify-content: space-between;
+    align-items: start;
 }
 
 .addressContainer{
@@ -60,3 +63,45 @@
     height: 1px;
     background-color: #E9E9E9;
 }
+
+.avatar{
+    border-radius: 50%;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+}
+
+.credentialsRightContainer{
+    width: 216px;
+    height: 90px;
+}
+
+.username,
+.email{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: "Public Sans";
+    font-style: normal;
+}
+
+.username{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303030;
+}
+
+.email{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #888;
+}
+
+.chipsContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
