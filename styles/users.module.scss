@@ -1,0 +1,281 @@
+/* Compile using: npx sass styles/users.module.scss styles/users.module.css */
+
+$cardWidth: 320px;
+$cardHeight: 392px;
+
+%insideAutoLayout {
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+%flexColStart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: static;
+}
+
+%flexRowStart {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: static;
+}
+
+.container {
+    background-color: #F0F0FD;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    padding: 0px;
+    width: $cardWidth;
+    height: $cardHeight;
+    background: #FFFFFF;
+    outline: 1px solid #E6E6F8;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
+    border-radius: 16px;
+    align-self: auto;
+}
+
+.cardBody {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    padding: 16px 16px 24px;
+    width: $cardWidth;
+    height: 340px;
+}
+
+.profileBox {
+    @extend %insideAutoLayout;
+    @extend %flexRowStart;
+    padding: 0px;
+    width: 288px;
+    height: 90px;
+    left: 16px;
+    top: 16px;
+}
+
+.profileBox > img {
+    @extend %insideAutoLayout;
+    position: static;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.profileBoxInnerDiv {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    justify-content: space-between;
+    padding: 6px 0px 0px;
+    width: 216px;
+    height: 90px;
+    left: 72px;
+    margin: 0px 16px;
+}
+
+.profileBoxInnerDivTop {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    padding: 0px;
+    width: 216px;
+    height: 44px;
+    top: 6px;
+}
+
+%generalFont {
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.profileBoxInnerDivTop > h1 {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    position: static;
+    width: 216px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303030;
+}
+
+.profileBoxInnerDivTop > h2 {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    position: static;
+    width: 216px;
+    height: 20px;
+    top: 24px;
+    font-weight: 400;
+    color: #888888;
+}
+
+.profileBoxInnerDivBottom {
+    @extend %insideAutoLayout;
+    @extend %flexRowStart;
+    padding: 0px;
+    width: 111px;
+    height: 32px;
+    top: 58px;
+}
+
+%userGraphicHolder {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 32px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.userSexHolder {
+    @extend %insideAutoLayout;
+    @extend %flexRowStart;
+    @extend %userGraphicHolder;
+    width: 62px;
+    background: #ECFDF5;
+    border: 1px solid #D1FAE5;
+}
+
+%userGraphicHolderInnerDiv {
+    position: static;
+    height: 20px;
+    left: 12px;
+    top: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.userSexHolder > div {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    @extend %userGraphicHolderInnerDiv;
+    width: 38px;
+    color: #065F46;
+    align-self: center;
+}
+
+.userAgeHolder {
+    @extend %insideAutoLayout;
+    @extend %flexRowStart;
+    @extend %userGraphicHolder;
+    width: 41px;
+    background: #F6F6F6;
+    border: 1px solid #E9E9E9;
+    margin: 0px 8px;
+}
+
+.userAgeHolder > div {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    @extend %userGraphicHolderInnerDiv;
+    width: 17px;
+    color: #303030;
+    align-self: center;
+}
+
+.addressBox {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    padding: 0px;
+    width: 288px;
+    height: 186px;
+    left: 16px;
+    top: 130px;
+    margin: 24px 0px;
+}
+
+.addressBoxContent {
+    @extend %insideAutoLayout;
+    @extend %flexColStart;
+    padding: 0px;
+    width: 288px;
+    height: 40px;
+}
+
+.addressBoxContent > h1 {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    position: static;
+    width: 288px;
+    height: 20px;
+    font-size: 14px;
+    color: #303030;
+}
+
+.addressBoxContent > h2 {
+    @extend %insideAutoLayout;
+    @extend %generalFont;
+    position: static;
+    width: 288px;
+    height: 20px;
+    top: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888888;
+}
+
+.addressBoxSeparator {
+    @extend %insideAutoLayout;
+    position: static;
+    width: 288px;
+    height: 1px;
+    background: #E9E9E9;
+    margin: 16px 0px;
+}
+
+.cardBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: static;
+    width: $cardWidth;
+    height: 52px;
+    left: 0px;
+    top: 340px;
+    background: #6D6EF6;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+    border-radius: 0px 0px 16px 16px;
+}
+
+.bottomButton {
+    padding: 16px;
+    width: calc(($cardWidth - 2px) / 3.0);
+    height: 52px;
+    margin: 0px 0px;
+}
+
+.bottomButtonSeparator {
+    width: 1px;
+    height: 52px;
+    background: #FFFFFF;
+}
+
+.bottomButton > div {
+    @extend %generalFont;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+}
