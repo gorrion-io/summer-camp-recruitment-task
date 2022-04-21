@@ -1,0 +1,14 @@
+.background {
+    height: 100%;
+    width: 100%;
+    background-color: #F0F0FD;
+}
+
+.mainContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}

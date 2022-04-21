@@ -1,0 +1,38 @@
+.mainContainer {
+    width: 320px;
+    height: 392px;
+    background-color: #FFF;
+    border: 1px solid #E6E6F8;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(48, 48, 48, 0.16);
+}
+
+.topContainer {
+    padding: 16px 16px 24px;
+    width: 100%;
+    height: 340px;
+}
+
+.bottomContainer {
+    background-color: #6D6EF6;
+    height: 52px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.verticalDivider {
+    background-color: #FFF;
+    height: 100%;
+    width: 1px;
+}
+
+.bottomLabel{
+    color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    font-style: normal;
+}
