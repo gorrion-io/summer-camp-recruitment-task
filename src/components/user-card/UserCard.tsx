@@ -3,8 +3,9 @@ import styles from './UserCard.module.css';
 import Head from "next/head";
 import AddressDetail from "../address-detail/AddressDetail";
 import Chip from "../chip/Chip";
+import {UserCardProps} from "./UserCardProps";
 
-const UserCard: React.FC = () => {
+const UserCard: React.FC<UserCardProps> = (props) => {
     return (
         <>
             <Head>
@@ -19,7 +20,7 @@ const UserCard: React.FC = () => {
                 <div className={styles.topContainer}>
                     <div className={styles.credentialsContainer}>
                         <img
-                            src={'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/853.jpg'}
+                            src={props.user.avatar}
                             alt={'avatar'}
                             height={56}
                             width={56}
@@ -27,16 +28,16 @@ const UserCard: React.FC = () => {
                         />
                         <div className={styles.credentialsRightContainer}>
                             <div style={{margin: '8px 0'}}>
-                                <h4 className={styles.username}>Ronald Richards</h4>
-                                <label className={styles.email}>ronald.richards@example.com</label>
+                                <h4 className={styles.username}>{props.user.fullName}</h4>
+                                <label className={styles.email}>{props.user.email}</label>
                             </div>
                             <div className={styles.chipsContainer}>
                                 <Chip
-                                    value={"Male"}
+                                    value={props.user.gender}
                                     chipStyle={{borderColor: '#D1FAE5', color: '#065F46', backgroundColor: '#ECFDF5'}}
                                 />
                                 <Chip
-                                    value={34}
+                                    value={props.user.age}
                                     chipStyle={{
                                         borderColor: '#E9E9E9',
                                         color: '#303030',
@@ -48,28 +49,28 @@ const UserCard: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.addressContainer}>
-                        <AddressDetail label={'street'} value={'Crown Point'}/>
+                        <AddressDetail label={'street'} value={props.user.address.street}/>
                         <div className={styles.horizontalDivider}/>
-                        <AddressDetail label={'city'} value={'Austin'}/>
+                        <AddressDetail label={'city'} value={props.user.address.city}/>
                         <div className={styles.horizontalDivider}/>
-                        <AddressDetail label={'zip code'} value={'73301'}/>
+                        <AddressDetail label={'zip code'} value={props.user.address.zip}/>
                     </div>
                 </div>
                 <div className={styles.bottomContainer}>
                     <span className={styles.bottomLabel}>
-                        <a href="https://www.google.com">
+                        <a href={props.user.images[0]}>
                             Image 1
                         </a>
                     </span>
                     <div className={styles.verticalDivider}/>
                     <span className={styles.bottomLabel}>
-                        <a href="https://www.google.com">
+                        <a href={props.user.images[1]}>
                             Image 2
                         </a>
                     </span>
                     <div className={styles.verticalDivider}/>
                     <span className={styles.bottomLabel}>
-                        <a href="https://www.google.com">
+                        <a href={props.user.images[2]}>
                             Image 3
                         </a>
                     </span>

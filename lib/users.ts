@@ -20,7 +20,7 @@ const userSchema = z.object({
   images: z.array(z.string().url()),
 });
 
-type User = z.infer<typeof userSchema>;
+export type User = z.infer<typeof userSchema>;
 
 export async function getAllUsers(): Promise<User[]> {
   return [];
