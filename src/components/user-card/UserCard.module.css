@@ -1,0 +1,108 @@
+.mainContainer {
+    width: 320px;
+    height: 392px;
+    background-color: #FFF;
+    border: 1px solid #E6E6F8;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(48, 48, 48, 0.16);
+}
+
+.topContainer {
+    padding: 16px 16px 24px;
+    width: 320px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomContainer {
+    background-color: #6D6EF6;
+    height: 52px;
+    width: 320px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.verticalDivider {
+    background-color: #FFF;
+    height: 100%;
+    width: 1px;
+}
+
+.bottomLabel{
+    color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    font-style: normal;
+    font-family: "Public Sans";
+}
+
+.credentialsContainer{
+    height: 90px;
+    width: 100%;
+    display: inherit;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.addressContainer{
+    height: 186px;
+    width: 100%;
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: space-between;
+}
+
+.horizontalDivider{
+    width: 100%;
+    height: 1px;
+    background-color: #E9E9E9;
+}
+
+.avatar{
+    border-radius: 50%;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+}
+
+.credentialsRightContainer{
+    width: 216px;
+    height: 90px;
+}
+
+.username,
+.email{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: "Public Sans";
+    font-style: normal;
+}
+
+.username{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #303030;
+}
+
+.email{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #888;
+}
+
+.chipsContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
