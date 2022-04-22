@@ -2,13 +2,18 @@
     height: 100%;
     width: 100%;
     background-color: #F0F0FD;
+    position: absolute;
 }
 
 .mainContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly;
     height: 100vh;
     width: 100vw;
+}
+
+.arrow:hover{
+    opacity: 75%;
+    transform: scale(1.1);
 }
