@@ -1,0 +1,7 @@
+@use '../../styles/scss/variables' as *;
+
+.container {
+  padding: 0 2rem;
+  background: $primary-background-color;
+  color: $primary-text-color;
+}
