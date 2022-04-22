@@ -1,7 +1,12 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
+import styles from '../styles/pages/Users.module.scss';
 
 const Users: NextPage = () => {
-  return <h1>Not implemented</h1>;
+  return (
+    <div className={styles.container}>
+      <main className={styles.main}></main>
+    </div>
+  );
 };
 
 export default Users;
