@@ -1,5 +1,9 @@
+@use './scss/variables' as *;
+
 .container {
   padding: 0 2rem;
+  background: $primary-background-color;
+  color: $primary-text-color;
 }
 
 .main {
@@ -20,7 +24,7 @@
 }
 
 .link {
-  color: #fccd3c;
+  color: $yellow;
   text-decoration: none;
 
   &:hover,
@@ -30,11 +34,30 @@
   }
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-    monospace;
+.buttonsContainer {
+  margin-top: 2rem;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.button {
+  font-size: 2rem;
+  border: $border;
+  padding: 1rem;
+  border-radius: $border-radius;
+  cursor: pointer;
+  background: $black;
+  color: $white;
+  transition: 0.2s ease-in-out;
+  box-shadow: $box-shadow;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: $accent-color;
+    color: $white;
+  }
 }
