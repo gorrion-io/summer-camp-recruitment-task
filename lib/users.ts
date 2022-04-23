@@ -88,3 +88,5 @@ export async function getAllUsers(): Promise<User[]> {
 
   return combinedUsers;
 }
+
+export type { User };
