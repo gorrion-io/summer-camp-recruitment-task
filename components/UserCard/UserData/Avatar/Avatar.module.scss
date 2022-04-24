@@ -1,0 +1,8 @@
+@use '../../../../styles/scss/variables' as *;
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #e9e9e9;
+}

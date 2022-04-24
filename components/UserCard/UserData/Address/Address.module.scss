@@ -1,0 +1,33 @@
+@use '../../../../styles/scss/variables' as *;
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addressItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.textMain {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.textSecondary {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: $gray;
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: #e9e9e9;
+}

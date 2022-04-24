@@ -1,0 +1,57 @@
+@use '../scss/variables' as *;
+
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.link {
+  color: $yellow;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.buttonsContainer {
+  margin-top: 2rem;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.button {
+  font-size: 2rem;
+  border: $border;
+  padding: 1rem;
+  border-radius: $border-radius;
+  cursor: pointer;
+  background: $black;
+  color: $white;
+  transition: 0.2s ease-in-out;
+  box-shadow: $box-shadow;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: $accent-color;
+    color: $white;
+  }
+}

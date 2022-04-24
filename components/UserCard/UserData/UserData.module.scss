@@ -1,0 +1,16 @@
+@use '../../../styles/scss/variables' as *;
+
+.userData {
+  flex: 1 0;
+  width: 100%;
+  padding: 16px 16px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
