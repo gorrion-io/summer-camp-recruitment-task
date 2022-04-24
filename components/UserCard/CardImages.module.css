@@ -1,0 +1,23 @@
+/* container for buttons */
+.imgbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1px;
+}
+
+/* buttons styles */
+.imgbox button {
+  color: #ffffff;
+  background-color: #6d6ef6;
+  line-height: 20px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  border: none;
+  padding: 16px;
+}
+
+.imgbox button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}

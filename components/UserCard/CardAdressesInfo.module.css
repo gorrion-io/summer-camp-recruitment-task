@@ -1,0 +1,38 @@
+/* CardAddresses main container style */
+.adressbox {
+  margin: 24px 0;
+  padding: 0 16px;
+}
+
+/* Typography */
+.streetbox h5,
+.citybox h5,
+.zipcodebox h5 {
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.streetbox p,
+.citybox p,
+.zipcodebox p {
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* Address's section style */
+.streetbox {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e9e9e9;
+}
+.citybox {
+  padding: 16px 0;
+  border-bottom: 1px solid #e9e9e9;
+}
+.zipcodebox {
+  padding-top: 16px;
+}
