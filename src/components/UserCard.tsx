@@ -5,7 +5,7 @@ import { User } from "../../lib/users";
 import styles from "./UserCard.module.css";
 
 const UserCard = (props: any) => {
-	const user: User = props.children[1];
+	const user: User = props.children;
 	return (
 		<div className={styles["user-card"]}>
 			<UserDescription userInfo={user}></UserDescription>

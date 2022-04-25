@@ -1,6 +1,7 @@
 .user-description {
 	display: flex;
-	margin: 16px;
+	padding-top: 16px;
+	padding-left: 10px;
 }
 
 .image {
