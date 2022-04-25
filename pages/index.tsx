@@ -1,11 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import UserCard from "../src/components/UserCard";
+import { useEffect, useState } from "react";
+import { User } from "../lib/users";
 import { getAllUsers } from "../lib/users";
 
 const Home: NextPage = () => {
-	getAllUsers();
+	const [data, setData] = useState<User[]>([]);
+
+	useEffect(() => {
+		const getData = async () => {
+			const users = await getAllUsers();
+			setData(users);
+		};
+		getData();
+	}, []);
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -23,6 +34,12 @@ const Home: NextPage = () => {
 					Get started by editing <code className={styles.code}>pages/index.tsx</code>
 				</p>
 			</main>
+
+			<section>
+				{data.map(user => (
+					<UserCard key={user.email}> {user} </UserCard>
+				))}
+			</section>
 		</div>
 	);
 };
