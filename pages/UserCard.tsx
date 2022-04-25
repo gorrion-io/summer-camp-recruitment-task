@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "../styles/User.module.scss";
+import styles from "../styles/UserCard.module.scss";
 
 function UserAddressField(props: any) {
   return (
