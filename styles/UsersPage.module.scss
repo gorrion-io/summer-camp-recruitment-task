@@ -1,0 +1,13 @@
+.usersContainer {
+  background-color: #e6e6f8;
+
+  .tabContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 992px;
+    gap: 16px;
+    margin: auto;
+    padding: 25px 0;
+  }
+}
