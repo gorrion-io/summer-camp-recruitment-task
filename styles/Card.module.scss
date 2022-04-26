@@ -1,0 +1,143 @@
+@use "./abstracts/colors";
+@use "./abstracts/fonts";
+
+%containerModel {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0.6em 0.8em;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+
+@mixin containerLight($color) {
+  border: 1px solid darken($color, 5);
+  background-color: $color;
+  color: darken($color, 75);
+}
+
+.background {
+  background: colors.$background-color;
+  font-family: fonts.$fontFamily-primary;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontalLine {
+  outline: 1px solid colors.$horizontalLine-color;
+  width: 100%;
+}
+
+.card {
+  width: 320px;
+  height: 392px;
+  background: white;
+  border-radius: 16px !important;
+  box-shadow: 0px 8px 16px #30303029;
+  border: 1px solid darken(colors.$background-color, 2.2);
+  overflow: hidden;
+  position: relative;
+}
+.header {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  height: 130px;
+  width: 100%;
+  padding: 1em;
+}
+.header__image {
+  height: 56px;
+  width: 56px;
+}
+.header__image img {
+  height: inherit;
+  border-radius: 30px;
+}
+
+.header__fullname {
+  font-weight: 600;
+  height: 1.2em;
+  margin: 0;
+}
+.header__email {
+  font-size: 12px;
+  font-weight: 500;
+  height: 1.5em;
+  color: colors.$secondary-color;
+}
+
+.header__containers {
+  grid-column-start: 2;
+}
+
+.container {
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.6em 1em;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+
+.container__green {
+  @extend %containerModel;
+  @include containerLight(colors.$greenContainer-color);
+}
+
+.container__gray {
+  @extend %containerModel;
+  @include containerLight(colors.$grayContainer-color);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 210px;
+  padding: 1.2em 1em;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.info__data {
+  font-size: 14px;
+  line-height: 20px;
+}
+.info__prop {
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: colors.$secondary-color;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  text-align: center;
+  height: 52px;
+  background-color: colors.$primary-color;
+  color: white;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-weight: 500;
+  background: inherit;
+  color: white;
+  border: unset;
+}
+
+.footer__item:not(:last-child) {
+  border-right: 1px solid white;
+}
