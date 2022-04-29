@@ -1,31 +1,44 @@
 // env
 require("dotenv").config({ path: "../.env" });
 
+// parse csv to json library
 const csvtojson = require("csvtojson");
 
 // types
 import { URL } from "../types/url";
 import { User, UserJSON, UserCSV } from "../types/userTypes";
 
-const getUsersCsv = async (csvFilePath: string): Promise<User[]> => {
-  // (2) convert csv to json
+// constants
+import {
+  yearInMilliseconds,
+  millisecondsMinAge,
+  millisecondsMaxAge,
+} from "../constants/userAge";
+
+export const getUsersCsv = async (csvFilePath: string): Promise<User[]> => {
+  // convert csv to json
   const csvToJsonUsers: UserCSV[] = await csvtojson().fromFile(csvFilePath);
 
   let csvUsersFilteredByAge: User[] = [];
 
-  let yearInMilliseconds: number = process.env.YEAR_IN_MILLISECONDS;
-
-  let yrsInMilliseconds: number = process.env.YEAR_IN_MILLISECONDS * 18;
-
-  // (4) filter users with age of 18-65
+  // filter users with age of 18-65
   csvToJsonUsers.filter((user: UserCSV) => {
     for (let prop in user) {
       if (prop === "bio") {
+        // get amount of milliseconds pass from 1980 till now
         const currentDate: number = Date.now();
 
+        // get amount of milliseconds pass from 1980 to user birth date in milliseconds
         const dob: number = new Date(user[prop]["dob"]).getTime();
 
-        if (currentDate - dob >= yrsInMilliseconds) {
+        const userAgeInMilliseconds: number = currentDate - dob;
+
+        // if user age is in range 18-65
+        if (
+          userAgeInMilliseconds >= millisecondsMinAge &&
+          userAgeInMilliseconds < millisecondsMaxAge + yearInMilliseconds
+        ) {
+          // calculate age
           let age: number = Math.floor(
             (currentDate - dob) / yearInMilliseconds
           );
@@ -52,7 +65,7 @@ const getUsersCsv = async (csvFilePath: string): Promise<User[]> => {
   return csvUsersFilteredByAge;
 };
 
-const getUsersJSON = (jsonFilePath: string): User[] => {
+export const getUsersJSON = (jsonFilePath: string): User[] => {
   // users list from JSON file
   const jsonUsers: UserJSON[] = require(jsonFilePath);
 
@@ -63,7 +76,7 @@ const getUsersJSON = (jsonFilePath: string): User[] => {
     maxAge: process.env.USER_MAX_AGE,
   };
 
-  // (1) filter users which age is in a range 18-65
+  // filter users which age is in a range 18-65
   jsonUsers.filter((user: UserJSON) => {
     for (let prop in user) {
       if (
@@ -98,3 +111,7 @@ export default async function getAllUsers(url: URL): Promise<User[]> {
 
   return usersFromJSON.concat(usersFromCsv);
 }
+
+getAllUsers({ pathToCsv: "../users.csv", pathToJSON: "../users.json" }).then(
+  (res) => console.log(res)
+);

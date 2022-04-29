@@ -3,7 +3,7 @@ import {
   userSchema,
   jsonUserSchema,
   csvUserSchema,
-} from "../schemes/userScheme";
+} from "../schemas/userScheme";
 
 export type User = z.infer<typeof userSchema>;
 export type UserCSV = z.infer<typeof csvUserSchema>;
