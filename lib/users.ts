@@ -4,22 +4,31 @@ require("dotenv").config({ path: "../.env" });
 // parse csv to json library
 const csvtojson = require("csvtojson");
 
+// app root path
+const { path } = require("app-root-path");
+
+const data = require("../users.json");
+
 // types
-import { URL } from "../types/url";
 import { User, UserJSON, UserCSV } from "../types/userTypes";
 
-// constants
-import {
-  yearInMilliseconds,
-  millisecondsMinAge,
-  millisecondsMaxAge,
-} from "../constants/userAge";
-
-export const getUsersCsv = async (csvFilePath: string): Promise<User[]> => {
+export const getUsersCsv = async (): Promise<User[]> => {
   // convert csv to json
-  const csvToJsonUsers: UserCSV[] = await csvtojson().fromFile(csvFilePath);
+  const csvToJsonUsers: UserCSV[] = await csvtojson().fromFile(
+    `${path}/users.csv`
+  );
 
   let csvUsersFilteredByAge: User[] = [];
+
+  const yearInMilliseconds: number = process.env.YEAR_IN_MILLISECONDS;
+
+  // user min age in milliseconds
+  const millisecondsMinAge: number =
+    process.env.YEAR_IN_MILLISECONDS * process.env.USER_MIN_AGE;
+
+  // user max age in milliseconds
+  const millisecondsMaxAge: number =
+    process.env.YEAR_IN_MILLISECONDS * process.env.USER_MAX_AGE;
 
   // filter users with age of 18-65
   csvToJsonUsers.filter((user: UserCSV) => {
@@ -65,9 +74,9 @@ export const getUsersCsv = async (csvFilePath: string): Promise<User[]> => {
   return csvUsersFilteredByAge;
 };
 
-export const getUsersJSON = (jsonFilePath: string): User[] => {
+export const getUsersJSON = (): User[] => {
   // users list from JSON file
-  const jsonUsers: UserJSON[] = require(jsonFilePath);
+  const jsonUsers: UserJSON[] = data;
 
   let jsonUsersFilteredByAge: User[] = [];
 
@@ -105,13 +114,9 @@ export const getUsersJSON = (jsonFilePath: string): User[] => {
   return jsonUsersFilteredByAge;
 };
 
-export default async function getAllUsers(url: URL): Promise<User[]> {
-  const usersFromCsv: User[] = await getUsersCsv(url.pathToCsv);
-  const usersFromJSON: User[] = getUsersJSON(url.pathToJSON);
+export default async function getAllUsers(): Promise<User[]> {
+  const usersFromCsv: User[] = await getUsersCsv();
+  const usersFromJSON: User[] = getUsersJSON();
 
   return usersFromJSON.concat(usersFromCsv);
 }
-
-getAllUsers({ pathToCsv: "../users.csv", pathToJSON: "../users.json" }).then(
-  (res) => console.log(res)
-);
