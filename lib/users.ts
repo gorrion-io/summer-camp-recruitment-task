@@ -120,5 +120,3 @@ export default async function getAllUsers(): Promise<User[]> {
 
   return usersFromJSON.concat(usersFromCsv);
 }
-
-export type { User };
