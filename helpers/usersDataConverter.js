@@ -2,57 +2,66 @@ const fs = require("fs");
 const csvToJson = require("convert-csv-to-json");
 
 const fileInputName = "data/users.csv";
-const fileOutputName = "data/users.json";
+const fileOutputName = "data/usersNewDB.json";
 
 export const dataConverter = () => {
-    // csvToJson.fieldDelimiter(',').generateJsonFileFromCsv(fileInputName, fileOutputName);
+    const newUserDataObj = [];
 
-    const newUserBase = fs.readFileSync(fileOutputName);
-    const newUserDataObj = JSON.parse(newUserBase);
+    const oldDataToConvert = csvToJson
+        .fieldDelimiter(",")
+        .getJsonFromCsv(fileInputName);
 
-    const json = csvToJson.fieldDelimiter(",").getJsonFromCsv("data/users.csv");
-    for (let i = 0; i < json.length; i++) {
+    for (let i = 0; i < oldDataToConvert.length; i++) {
+        const {
+            name: fullName,
+            username: userName,
+            email,
+            avatar,
+            "address.street": street,
+            "address.city": city,
+            "address.zipcode": zip,
+            phone: phoneNumber,
+            "bio.gender": gender,
+            "bio.dob": dob,
+            "imgs.0": img0,
+            "imgs.1": img1,
+            "imgs.2": img2,
+            "imgs.3": img3,
+        } = oldDataToConvert[i];
 
         const defineUserGender = () => {
             const genderLocation =
-                json[i]["bio.gender"] === "Male" ||
-                json[i]["bio.gender"] === "Female"
-                    ? "bio.gender"
-                    : "bio.dob";
+                gender === "Male" || gender === "Female" ? gender : dob;
 
-            return json[i][genderLocation];
+            return genderLocation;
         };
 
         const calculateUserAge = () => {
-            const birthLocation = !isNaN(
-                new Date(json[i]["bio.dob"]).getFullYear()
-            )
-                ? "bio.dob"
-                : "imgs.0";
+            const birthLocation = !isNaN(new Date(dob).getFullYear())
+                ? dob
+                : img0;
 
             const actualYear = new Date().getFullYear();
-            const birthdayYear = new Date(json[i][birthLocation]).getFullYear();
+            const birthdayYear = new Date(birthLocation).getFullYear();
 
             return actualYear - birthdayYear;
         };
 
         const convertedUserData = {
-            fullname: json[i].name,
-            userName: json[i].username,
-            email: json[i].email,
-            avatar: json[i].avatar,
+            fullName: fullName,
+            userName: userName,
+            email: email,
+            avatar: avatar,
             address: {
-                street: json[i]["address.street"],
-                city: json[i]["address.city"],
-                zip: json[i]["address.zipcode"],
+                street: street,
+                city: city,
+                zip: zip,
             },
-            phoneNumber: json[i].phone,
+            phoneNumber: phoneNumber,
             gender: defineUserGender(),
             age: calculateUserAge(),
-            images: [json[i]["imgs.1"], json[i]["imgs.2"], json[i]["imgs.3"]],
+            images: [img1, img2, img3],
         };
-
-        console.log(convertedUserData);
 
         newUserDataObj.push(convertedUserData);
     }
@@ -65,5 +74,5 @@ export const dataConverter = () => {
         );
     });
 
-    return json;
+    return newUserDataObj;
 };
