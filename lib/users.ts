@@ -1,27 +1,101 @@
-import { z } from "zod";
+import {readFile} from "fs/promises";
+import {createReadStream} from 'fs';
+import {parse} from "csv-parse";
+import {csvObj, csvPerson, gender, User} from "../types";
+import {evaluateDate, filterUsersByAge} from "../utils";
 
-const userSchema = z.object({
-  fullName: z.string().min(2).max(50),
-  username: z
-    .string()
-    .min(2)
-    .max(40)
-    .regex(/^[a-zA-Z0-9_]+$/),
-  email: z.string().email(),
-  avatar: z.string().url(),
-  address: z.object({
-    street: z.string().min(2).max(50),
-    city: z.string().min(2).max(50),
-    zip: z.string().min(2).max(20),
-  }),
-  phoneNumber: z.string().regex(/^\+\d{2}\s\d{3}\s\d{3}\s\d{3}$/),
-  gender: z.union([z.literal("Male"), z.literal("Female")]),
-  age: z.number().min(18).max(65),
-  images: z.array(z.string().url()),
-});
 
-type User = z.infer<typeof userSchema>;
+//function that reads csv file and put data to array
+const handleCsvFile = ():Promise<string[][]> => {
+    let localResults : string[][] = [];
+    return new Promise((resolve, reject) => {
+        createReadStream("./users.csv")
+            .pipe(
+                parse({
+                    delimiter: ",",
+                })
+            )
+            .on('data', (rowData: any) => {
+                localResults.push(rowData);
+            })
+            .on('end', () => {
+                resolve(localResults);
+            });
+    })
+}
+
+//function that parse raw data from arrays to Users objects
+const parseRawCsvArray = (userArr:string[][]):User[] => {
+
+    const fieldNames = [...userArr][0];
+
+    userArr.splice(0,1);
+
+    const arrOfObjects : csvObj[] = userArr.map(user=>{
+
+        let localObj: csvObj = {} as csvPerson;
+
+        for (let i=0;i<user.length;i++) {
+
+            localObj[`${fieldNames[i]}` as keyof csvPerson]=user[i];
+
+        }
+
+        return localObj;
+
+    })
+
+    return arrOfObjects.map(user => {
+
+        const age = evaluateDate(user["bio.dob"]);
+
+        const addressObj = {
+            street:user["address.street"],
+            city:user["address.city"],
+            zip:user["address.zipcode"],
+        };
+
+        const imagesArr = [
+            user["imgs.0"],
+            user["imgs.1"],
+            user["imgs.2"],
+            user["imgs.3"],
+        ];
+
+
+        let localObj : User  = {
+            fullName:user.name,
+            username:user.username,
+            email:user.email,
+            avatar:user.avatar,
+            address:addressObj,
+            phoneNumber:user.phone,
+            gender:user["bio.gender"] as gender,
+            age,
+            images:imagesArr,
+        };
+
+        return localObj;
+
+    })
+}
+
 
 export async function getAllUsers(): Promise<User[]> {
-  return [];
+    //get data from json file to string
+  const jsonData = await readFile("./users.json","utf-8");
+    //parsing json string to array of Users objects
+  const usersArrayFromJson : User[] = JSON.parse(jsonData);
+    //filter Users by age (18-65)
+  const userArrayFromJsonFiltered = filterUsersByAge(usersArrayFromJson);
+    //get arrays of data from csv
+  const rawCsvArray = await handleCsvFile();
+    //parse arrays of data to Users objects
+  const parsedCsvArray = parseRawCsvArray(rawCsvArray);
+    //filter Users by age (18-65)
+  const userArrayFromCsvFiltered = filterUsersByAge(parsedCsvArray);
+
+  return userArrayFromJsonFiltered.concat(userArrayFromCsvFiltered);
+
 }
+
