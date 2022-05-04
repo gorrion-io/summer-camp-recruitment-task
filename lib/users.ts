@@ -1,7 +1,7 @@
 import {readFile} from "fs/promises";
 import {createReadStream} from 'fs';
 import {parse} from "csv-parse";
-import {csvObj, csvPerson, gender, User} from "../types";
+import {csvObj, csvPerson, gender, jsonPerson, User} from "../types";
 import {evaluateDate, filterUsersByAge} from "../utils";
 
 
@@ -80,14 +80,38 @@ const parseRawCsvArray = (userArr:string[][]):User[] => {
     })
 }
 
+//function that parse jsonPerson array to User array
+const parseJsonArray = (usersArr:jsonPerson[]):User[] => {
+    return usersArr.map(jsonUser=>{
+
+        return {
+            fullName:jsonUser.full_name,
+            username:jsonUser.nickname,
+            email:jsonUser.email_address,
+            avatar:jsonUser.user_image,
+            address:{
+                street:jsonUser.user_address.street_address,
+                city:jsonUser.user_address.city.city_name,
+                zip:jsonUser.user_address.city.city_zip_code
+            },
+            phoneNumber:jsonUser.phone_number,
+            gender:jsonUser.gender,
+            age:jsonUser.age,
+            images:jsonUser.imgs
+        }
+    })
+}
+
 
 export async function getAllUsers(): Promise<User[]> {
     //get data from json file to string
   const jsonData = await readFile("./users.json","utf-8");
-    //parsing json string to array of Users objects
-  const usersArrayFromJson : User[] = JSON.parse(jsonData);
+    //parsing json string to array of jsonPerson objects
+  const rawDataFromJson : jsonPerson[] = JSON.parse(jsonData);
+    //parsing arr of jsonPerson objects to User Objects arr
+  const parsedJsonArray = parseJsonArray(rawDataFromJson);
     //filter Users by age (18-65)
-  const userArrayFromJsonFiltered = filterUsersByAge(usersArrayFromJson);
+  const userArrayFromJsonFiltered = filterUsersByAge(parsedJsonArray);
     //get arrays of data from csv
   const rawCsvArray = await handleCsvFile();
     //parse arrays of data to Users objects
@@ -96,6 +120,6 @@ export async function getAllUsers(): Promise<User[]> {
   const userArrayFromCsvFiltered = filterUsersByAge(parsedCsvArray);
 
   return userArrayFromJsonFiltered.concat(userArrayFromCsvFiltered);
-
 }
+
 

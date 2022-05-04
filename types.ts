@@ -44,3 +44,29 @@ export interface csvPerson {
     'imgs.2': string;
     'imgs.3': string;
 }
+
+export interface jsonPerson {
+    full_name: string;
+    nickname: string;
+    email_address: string;
+    user_image: string;
+    user_address:{
+        city: {
+            city_name: string;
+            city_photo: string;
+            city_zip_code: string;
+        };
+        street_address: string;
+        gps: string[];
+    };
+    phone_number: string;
+    user_url: string;
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
+    age: number;
+    gender: gender;
+    imgs: string[];
+};

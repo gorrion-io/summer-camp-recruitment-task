@@ -10,7 +10,8 @@ export const router = Router();
 
 router.get('/',async (req:Request,res:Response)=>{
   const users = await getAllUsers();
-  res.json(JSON.stringify(users));
+  console.log(users);
+  res.send(users);
 })
 
 
