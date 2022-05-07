@@ -1,15 +1,12 @@
 const fs = require("fs");
 const csvToJson = require("convert-csv-to-json");
 
-const fileInputName = "data/users.csv";
-const fileOutputName = "data/usersNewDB.json";
-
-export const dataConverter = () => {
+export const dataConverter = (inputDatabaseInCSV) => {
     const newUserDataObj = [];
 
     const oldDataToConvert = csvToJson
         .fieldDelimiter(",")
-        .getJsonFromCsv(fileInputName);
+        .getJsonFromCsv(inputDatabaseInCSV);
 
     for (let i = 0; i < oldDataToConvert.length; i++) {
         const {
@@ -66,13 +63,7 @@ export const dataConverter = () => {
         newUserDataObj.push(convertedUserData);
     }
 
-    fs.writeFile(fileOutputName, JSON.stringify(newUserDataObj), (err) => {
-        if (err) throw err;
-
-        console.log(
-            "Old database successfully rewritten to the new JSON file!"
-        );
-    });
+    console.log("Old database successfully rewritten to the new JSON file!");
 
     return newUserDataObj;
 };

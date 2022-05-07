@@ -1,10 +1,7 @@
 const fs = require("fs");
 
-const fileInputName = "data/users.json";
-const fileOutputName = "data/usersTemp.json";
-
-export const dataCustomizer = () => {
-    const dataToCustomize = JSON.parse(fs.readFileSync(fileInputName));
+export const dataCustomizer = (inputDatabaseInJSON) => {
+    const dataToCustomize = JSON.parse(fs.readFileSync(inputDatabaseInJSON));
 
     const newUserDataObj = [];
 
@@ -43,11 +40,7 @@ export const dataCustomizer = () => {
         newUserDataObj.push(customizedUserData);
     });
 
-    fs.writeFile(fileOutputName, JSON.stringify(newUserDataObj), (err) => {
-        if (err) throw err;
-
-        console.log("New database successfully customized to the Schema");
-    });
+    console.log("New database successfully customized to the Schema");
 
     return newUserDataObj;
 };

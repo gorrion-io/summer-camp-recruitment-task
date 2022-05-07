@@ -1,20 +1,15 @@
 import { NextPage } from "next";
-
-import { dataConverter } from '../helpers/usersDataConverter';
-import { dataCustomizer } from '../helpers/usersDataCustomizer';
-import { dataMerger } from "../helpers/userDataMerger";
+import { generateUsersData } from "../services/usersDataManager";
 
 const Users: NextPage = () => {
   return <h1>Not implemented</h1>;
 };
 
 export async function getStaticProps() {
-  
-  const convertedData = dataConverter();
-  const customizedData = dataCustomizer();
-  const mergedData = dataMerger();
 
-  return {props: {convertedData, customizedData, mergedData}}
+  const usersData = generateUsersData();
+
+  return {props: {usersData}}
 
 }
 
