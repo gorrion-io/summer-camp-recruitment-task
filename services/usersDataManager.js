@@ -6,8 +6,12 @@ const inputDatabaseInCSV = "data/users.csv";
 const inputDatabaseInJSON = "data/users.json";
 const outputmergedDatabase = "data/usersNewDB.json";
 
-export const generateUsersData = () => {
-    const convertedDatabase = dataConverter(inputDatabaseInCSV);
+export async function generateUsersData() {
+    const convertedDatabase = await dataConverter(inputDatabaseInCSV);
     const customizedDatabase = dataCustomizer(inputDatabaseInJSON);
-    return dataMerger(convertedDatabase, customizedDatabase, outputmergedDatabase);
-};
+    return dataMerger(
+        convertedDatabase,
+        customizedDatabase,
+        outputmergedDatabase
+    );
+}

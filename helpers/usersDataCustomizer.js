@@ -8,7 +8,7 @@ export const dataCustomizer = (inputDatabaseInJSON) => {
     dataToCustomize.map((inputUserData, index) => {
         const {
             full_name: fullName,
-            nickname: userName,
+            nickname: username,
             email_address: email,
             user_image: avatar,
             user_address: address,
@@ -23,7 +23,7 @@ export const dataCustomizer = (inputDatabaseInJSON) => {
 
         const customizedUserData = {
             fullName: fullName,
-            userName: userName,
+            username: username,
             email: email,
             avatar: avatar,
             address: {

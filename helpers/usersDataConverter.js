@@ -1,52 +1,40 @@
 const fs = require("fs");
-const csvToJson = require("convert-csv-to-json");
+const csv = require("csvtojson");
 
-export const dataConverter = (inputDatabaseInCSV) => {
+export async function dataConverter(inputDatabaseInCSV) {
     const newUserDataObj = [];
 
-    const oldDataToConvert = csvToJson
-        .fieldDelimiter(",")
-        .getJsonFromCsv(inputDatabaseInCSV);
+    const oldDataToConvert = await csv().fromFile(inputDatabaseInCSV);
 
-    for (let i = 0; i < oldDataToConvert.length; i++) {
+    oldDataToConvert.map((userData, index) => {
         const {
             name: fullName,
-            username: userName,
+            username,
             email,
             avatar,
-            "address.street": street,
-            "address.city": city,
-            "address.zipcode": zip,
+            address,
             phone: phoneNumber,
-            "bio.gender": gender,
-            "bio.dob": dob,
-            "imgs.0": img0,
-            "imgs.1": img1,
-            "imgs.2": img2,
-            "imgs.3": img3,
-        } = oldDataToConvert[i];
+            bio,
+            imgs,
+        } = userData;
 
-        const defineUserGender = () => {
-            const genderLocation =
-                gender === "Male" || gender === "Female" ? gender : dob;
+        const { street, city, zipcode: zip } = address;
+        const { gender, dob } = bio;
 
-            return genderLocation;
+        const defineUserGender = (gender) => {
+            return gender === "Male" ? gender : "Female";
         };
 
-        const calculateUserAge = () => {
-            const birthLocation = !isNaN(new Date(dob).getFullYear())
-                ? dob
-                : img0;
-
+        const calculateUserAge = (dateString) => {
             const actualYear = new Date().getFullYear();
-            const birthdayYear = new Date(birthLocation).getFullYear();
+            const birthdayYear = new Date(dateString).getFullYear();
 
             return actualYear - birthdayYear;
         };
 
         const convertedUserData = {
             fullName: fullName,
-            userName: userName,
+            username: username,
             email: email,
             avatar: avatar,
             address: {
@@ -55,15 +43,15 @@ export const dataConverter = (inputDatabaseInCSV) => {
                 zip: zip,
             },
             phoneNumber: phoneNumber,
-            gender: defineUserGender(),
-            age: calculateUserAge(),
-            images: [img1, img2, img3],
+            gender: defineUserGender(gender),
+            age: calculateUserAge(dob),
+            images: imgs,
         };
 
         newUserDataObj.push(convertedUserData);
-    }
+    });
 
     console.log("Old database successfully rewritten to the new JSON file!");
 
     return newUserDataObj;
-};
+}
