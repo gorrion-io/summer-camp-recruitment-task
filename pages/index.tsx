@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <Link href="/users"><a>Gorrion</a></Link> Summer Camp 2022
+          <Link href="/users/index"><a>Gorrion</a></Link> Summer Camp 2022
         </h1>
 
         <p className={styles.description}>
