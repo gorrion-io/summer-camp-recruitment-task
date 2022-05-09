@@ -1,12 +1,14 @@
-const fs = require("fs");
-const csv = require("csvtojson");
+import csv from "csvtojson";
+import { User } from "../lib/users";
 
-export async function dataConverter(inputDatabaseInCSV) {
-    const newUserDataObj = [];
+export async function dataConverter(
+    inputDatabaseInCSV: string
+): Promise<User[]> {
+    const newUserDataObj: Array<any> = [];
 
     const oldDataToConvert = await csv().fromFile(inputDatabaseInCSV);
 
-    oldDataToConvert.map((userData, index) => {
+    oldDataToConvert.map((inputUserData) => {
         const {
             name: fullName,
             username,
@@ -15,17 +17,17 @@ export async function dataConverter(inputDatabaseInCSV) {
             address,
             phone: phoneNumber,
             bio,
-            imgs,
-        } = userData;
+            imgs: images,
+        } = inputUserData;
 
         const { street, city, zipcode: zip } = address;
         const { gender, dob } = bio;
 
-        const defineUserGender = (gender) => {
+        const defineUserGender = (gender: string): string => {
             return gender === "Male" ? gender : "Female";
         };
 
-        const calculateUserAge = (dateString) => {
+        const calculateUserAge = (dateString: string): number => {
             const actualYear = new Date().getFullYear();
             const birthdayYear = new Date(dateString).getFullYear();
 
@@ -33,19 +35,19 @@ export async function dataConverter(inputDatabaseInCSV) {
         };
 
         const convertedUserData = {
-            fullName: fullName,
-            username: username,
-            email: email,
-            avatar: avatar,
+            fullName,
+            username,
+            email,
+            avatar,
             address: {
-                street: street,
-                city: city,
-                zip: zip,
+                street,
+                city,
+                zip,
             },
-            phoneNumber: phoneNumber,
+            phoneNumber,
             gender: defineUserGender(gender),
             age: calculateUserAge(dob),
-            images: imgs,
+            images,
         };
 
         newUserDataObj.push(convertedUserData);

@@ -1,11 +1,12 @@
 const fs = require("fs");
+import { User } from "../lib/users";
 
-export const dataCustomizer = (inputDatabaseInJSON) => {
+export const dataCustomizer = (inputDatabaseInJSON: string): Array<User[]> => {
     const dataToCustomize = JSON.parse(fs.readFileSync(inputDatabaseInJSON));
 
-    const newUserDataObj = [];
+    const newUserDataObj: Array<any> = [];
 
-    dataToCustomize.map((inputUserData, index) => {
+    dataToCustomize.map((inputUserData) => {
         const {
             full_name: fullName,
             nickname: username,
@@ -22,19 +23,19 @@ export const dataCustomizer = (inputDatabaseInJSON) => {
         const { city_name: city, city_zip_code: zip } = cityData;
 
         const customizedUserData = {
-            fullName: fullName,
-            username: username,
-            email: email,
-            avatar: avatar,
+            fullName,
+            username,
+            email,
+            avatar,
             address: {
-                street: street,
-                city: city,
-                zip: zip,
+                street,
+                city,
+                zip,
             },
-            phoneNumber: phoneNumber,
-            gender: gender,
-            age: age,
-            images: images,
+            phoneNumber,
+            gender,
+            age,
+            images,
         };
 
         newUserDataObj.push(customizedUserData);

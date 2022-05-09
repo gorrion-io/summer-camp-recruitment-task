@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { generateUsersData } from "../../services/usersDataManager";
 
-// const fsp = require("fs").promises;
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
