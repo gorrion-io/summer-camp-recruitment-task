@@ -9,6 +9,8 @@
     width: 100vw;
     height: 100vh;
 
+    padding: 80px;
+
     background-color: $wrapper-background-color;
 
     .card {
@@ -17,10 +19,8 @@
         justify-content: center;
         align-items: flex-start;
 
-        min-width: 30vw;
-        min-height: 20vh;
-
-        border: 1px solid $border-main-color;
+        min-width: 35vw;
+        min-height: 15vh;
 
         box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
         border-radius: 16px;
@@ -33,15 +33,19 @@
             justify-content: center;
             align-items: center;
 
+            width: 100%;
+
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
 
-
             .header-avatar {
-                margin: 16px;
-                border-radius: 16px;
+                margin: 8px;
+                margin-top: 0;
+
+                width: 35%;
 
                 &__avatar {
+                    border-radius: 50%;
                 }
             }
 
@@ -51,6 +55,8 @@
                 align-items: flex-start;
 
                 &__text-group {
+                    padding-top: 16px;
+                    padding-bottom: 4px;
                 }
 
                 &__text {
@@ -81,7 +87,9 @@
                 }
 
                 &__tag {
+                    margin-right: 8px;
                     padding: 6px 12px;
+                    border-radius: 4px;
 
                     font-style: normal;
                     font-weight: 600;
@@ -94,14 +102,12 @@
                     &--gender {
                         background: $tag-primary-background-color;
                         border: 1px solid #d1fae5;
-                        border-radius: 4px;
 
                         color: $tag-primary-text-color;
                     }
                     &--age {
                         background: $tag-secondary-background-color;
                         border: 1px solid #e9e9e9;
-                        border-radius: 4px;
 
                         color: $tag-secondary-text-color;
                     }
@@ -110,11 +116,22 @@
         }
 
         &__block {
+            padding-left: 4px;
+            padding-right: 16px;
+            padding-top: 6px;
+            padding-bottom: 8px;
             border-radius: 0;
+            width: 100%;
+
+            border-bottom: 1px solid $border-block-color;
+
+            &:nth-last-child(1) {
+                border: 0;
+            }
 
             .address-section {
-                margin-left: 16px;
-                margin-right: 16px;
+                margin-left: 4px;
+                margin-right: 4px;
 
                 font-style: normal;
                 font-weight: 600;
@@ -138,25 +155,36 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
 
-            padding-left: 8px;
-            padding-right: 8px;
-
-            border: 1px solid $footer-section-text-color;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            width: 100%;
 
             background-color: $footer-section-background-color;
             color: $footer-section-text-color;
 
-            .footer-image {
-                min-width: 33%;
-                min-height: 100%;
+            &.footer-image {
+                align-self: stretch;
+
+                border: 1px solid $footer-section-text-color;
+                box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
+
+                &:nth-of-type(1) {
+                    border-bottom-left-radius: 16px;
+                }
+
+                &:nth-last-of-type(1) {
+                    border-bottom-right-radius: 16px;
+                }
+
                 &__link {
-                    height: 100%;
-                    width: 100%;
                     display: block;
+                    padding: 8px;
+                    width: 100%;
+
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 20px;
+
                     text-align: center;
                 }
             }
