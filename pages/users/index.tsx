@@ -1,33 +1,29 @@
 import { NextPage } from "next";
 import { getFilteredUsers } from "../../lib/users";
 
-import UsersList from "./list";
+import UserCard from "./card";
 
-import styles from "../styles/Users.module.css";
+import { IUsersArrayProps } from "../../interfaces/IUserProps.interface";
+import { IUser } from "../../interfaces/IUser.interface";
 
-const Users: NextPage = ({ usersData }: any) => {
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>User Name</th>
-                    <th>Details (card)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <UsersList usersData={usersData} />
-            </tbody>
-        </table>
-    );
+const Users = ({ usersDataArray }: IUsersArrayProps) => {
+    const randomizeUserDataIndex = (usersDataArray: Array<IUser>): number => {
+        return Math.floor(Math.random() * (usersDataArray.length - 1));
+    };
+
+    const selectRandomUserCard = (usersDataArray: Array<IUser>): IUser => {
+        return usersDataArray[randomizeUserDataIndex(usersDataArray)];
+    };
+
+    return <UserCard userData={selectRandomUserCard(usersDataArray)} />;
 };
 
 export async function getStaticProps() {
-    const usersData = await getFilteredUsers(18, 65);
+    const usersDataArray = await getFilteredUsers(18, 65);
 
-    console.log(usersData);
+    console.log(usersDataArray);
 
-    return { props: { usersData } };
+    return { props: { usersDataArray } };
 }
 
 export default Users;
