@@ -53,7 +53,7 @@ export async function getAllUsers(): Promise<User[]> {
 			const response = await fetch("users.csv");
 			const parsedCSV = csv(csvParserConfig).fromString(await response.text());
 			const mappedData: User[] = (await parsedCSV).map(
-				({ name, username, avatar, email, address, phone, bio, imgs }) => {
+				({ name, username, avatar, email, address, phone, bio, imgs }: any) => {
 					const newUser: User = {
 						fullName: name,
 						username: username,
@@ -79,6 +79,47 @@ export async function getAllUsers(): Promise<User[]> {
 		return [];
 	}
 
+	async function getJSONUsers() {
+		try {
+			const response = await fetch("users.json");
+			const jsonData = await response.json();
+			const mappedData: User[] = (await jsonData).map(
+				({
+					full_name,
+					nickname,
+					user_image,
+					email_address,
+					user_address,
+					phone_number,
+					age,
+					gender,
+					imgs,
+				}: any) => {
+					const newUser: User = {
+						fullName: full_name,
+						username: nickname,
+						avatar: user_image,
+						email: email_address,
+						address: {
+							street: user_address.street_address,
+							city: user_address.city.city_name,
+							zip: user_address.city.city_zip_code,
+						},
+						phoneNumber: phone_number,
+						gender: gender,
+						age: age,
+						images: imgs,
+					};
+					return newUser;
+				}
+			);
+			return mappedData;
+		} catch (error) {
+			console.error(error);
+		}
+		return [];
+	}
+
 	function filterUsers(array: User[]) {
 		const filteredArray: User[] = array.filter(
 			(user) => userSchema.safeParse(user).success
@@ -86,5 +127,7 @@ export async function getAllUsers(): Promise<User[]> {
 		return filteredArray;
 	}
 
-	return filterUsers(await getCSVUsers());
+	console.log(filterUsers((await getCSVUsers()).concat(await getJSONUsers())));
+
+	return filterUsers((await getCSVUsers()).concat(await getJSONUsers()));
 }
