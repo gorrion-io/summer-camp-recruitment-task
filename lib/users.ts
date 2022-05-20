@@ -21,37 +21,67 @@ const userSchema = z.object({
   images: z.array(z.string().url()),
 });
 
-type User = z.infer<typeof userSchema>;
+export type User = z.infer<typeof userSchema>;
 
 export async function getAllUsers(): Promise<User[]> {
-  const csvParserConfig = {
-    delimiter: ",",
-    trim: true,
-    includeColumns: /(name|email|avatar|address.street|address.city|address.zipcode|phone|bio|images)/,
-    colParser: {
-      "bio.dob":function(item: string, head: string){
-        return getAge(item)
+  async function getCSVUsers(){
+    const csvParserConfig = {
+      delimiter: ",",
+      trim: true,
+      includeColumns: /(name|email|avatar|address.street|address.city|address.zipcode|phone|bio|imgs)/,
+      colParser: {
+        "bio.dob":function(item: string){
+          return getAge(item)
+        }
+      },
+      checkType: false
+    }
+       
+    function getAge(dateOfBirth: string){
+      const today = new Date();
+      const birthDate = new Date(dateOfBirth);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
       }
+      return age;
+    }
+
+    try{
+      const response = await fetch("users.csv")
+      const parsedCSV = csv(csvParserConfig).fromString( await response.text())
+      const mappedData: User[] = (await parsedCSV).map(({name, username, avatar, email, address, phone, bio, imgs}) => {
+        const newUser: User = {
+          fullName: name,
+          username: username,
+          avatar: avatar,
+          email: email,
+          address: {
+            street: address.street,
+            city: address.city,
+            zip: address.zipcode
+          },
+          phoneNumber: phone,
+          gender: bio.gender,
+          age: bio.dob,
+          images: imgs
+        }
+        return newUser
+      })
+      return mappedData
+    }
+    catch(error){
+      console.log(error)
+      return []
     }
   }
 
-  await fetch('users.csv')
-    .then(response => response.text())
-    .then(data => csv(csvParserConfig).fromString(data))
-    .then((parsed)=>console.log(parsed))
-    .catch((error) => console.log(error))
   
-  function getAge(dateOfBirth: string){
-    var today = new Date();
-    var birthDate = new Date(dateOfBirth);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
+  function filterUsers(array: User[]){
+    const filteredArray: User[] = array.filter(user => userSchema.safeParse(user).success)
+    return filteredArray
   }
 
-
-  return [];
+  return filterUsers(await getCSVUsers())
 }
