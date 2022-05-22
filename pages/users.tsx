@@ -13,7 +13,9 @@ const Users: NextPage = () => {
 
 	function printUsers() {
 		const testBatch = users.slice(0);
-		return testBatch.map((user: User) => <Card user={user} />);
+		return testBatch.map((user: User, index: number) => (
+			<Card user={user} key={index} />
+		));
 	}
 	return <div className={styles.container}>{printUsers()}</div>;
 };

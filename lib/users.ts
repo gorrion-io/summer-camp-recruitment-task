@@ -127,7 +127,5 @@ export async function getAllUsers(): Promise<User[]> {
 		return filteredArray;
 	}
 
-	console.log(filterUsers((await getCSVUsers()).concat(await getJSONUsers())));
-
 	return filterUsers((await getCSVUsers()).concat(await getJSONUsers()));
 }
