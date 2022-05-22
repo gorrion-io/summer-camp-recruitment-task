@@ -12,7 +12,7 @@ const Users: NextPage = () => {
 	}, []);
 
 	function printUsers() {
-		const testBatch = users.slice(users.length - 5);
+		const testBatch = users.slice(0);
 		return testBatch.map((user: User) => <Card user={user} />);
 	}
 	return <div className={styles.container}>{printUsers()}</div>;

@@ -5,6 +5,7 @@
 	box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
 	border-radius: 16px;
 	width: min(20rem, 75%);
+	height: fit-content;
 
 	display: flex;
 	flex-direction: column;
@@ -114,8 +115,9 @@ ul.address li:last-child {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	gap: 1px;
-	overflow: scroll;
+	flex-wrap: wrap;
+	gap: 0.1em;
+	overflow: hidden;
 	border-bottom-left-radius: 16px;
 	border-bottom-right-radius: 16px;
 }
@@ -134,4 +136,12 @@ ul.address li:last-child {
 
 	flex-grow: 1;
 	align-self: stretch;
+}
+
+.images__hyperlink:hover {
+	background-color: #5858cc;
+}
+
+.images::-webkit-scrollbar {
+	display: none;
 }
