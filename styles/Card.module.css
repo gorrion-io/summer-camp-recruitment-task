@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600&display=swap");
+.container {
+	background-color: #ffffff;
+	border: 1px solid #e6e6f8;
+	box-shadow: 0px 8px 16px rgba(48, 48, 48, 0.16);
+	border-radius: 16px;
+	width: min(20rem, 75%);
+	height: fit-content;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0;
+
+	font-family: "Public Sans";
+	font-weight: 600;
+	margin: 2rem;
+}
+
+.profile {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 1rem 1rem 1.5rem;
+	gap: 1.5rem;
+	width: 100%;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.user {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
+}
+
+.credentials__heading {
+	font-size: 1rem;
+	line-height: 1.5rem;
+	margin: 0;
+}
+
+.credentials__paragraph {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: #888888;
+	line-height: 1.25rem;
+	margin: 0;
+}
+
+.bio {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.bio__paragraph {
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	padding: 6px 12px;
+	margin: 0;
+	border-radius: 4px;
+}
+
+ul.address {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+ul.address li {
+	border-bottom: 1px solid #e9e9e9;
+	padding: 1rem 0;
+}
+
+ul.address li:first-child {
+	padding-top: 0;
+}
+
+ul.address li:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.address__heading {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: #303030;
+
+	margin: 0;
+}
+
+.address__paragraph {
+	font-size: 0.75rem;
+	line-height: 1.25rem;
+	color: #888888;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	margin: 0;
+}
+
+.images {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.1em;
+	overflow: hidden;
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+}
+
+.images__hyperlink {
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 500;
+	text-align: center;
+	color: #ffffff;
+
+	min-width: 5.5rem;
+	background-color: #6d6ef6;
+	cursor: pointer;
+	padding: 1rem;
+
+	flex-grow: 1;
+	align-self: stretch;
+}
+
+.images__hyperlink:hover {
+	background-color: #5858cc;
+}
+
+.images::-webkit-scrollbar {
+	display: none;
+}

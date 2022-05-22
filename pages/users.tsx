@@ -1,7 +1,23 @@
 import { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { getAllUsers, User } from "../lib/users";
+import { Card } from "../components/Card";
+import styles from "../styles/Users.module.css";
 
 const Users: NextPage = () => {
-  return <h1>Not implemented</h1>;
+	const [users, setUsers] = useState<User[]>([]);
+
+	useEffect(() => {
+		getAllUsers().then((users) => setUsers(users));
+	}, []);
+
+	function printUsers() {
+		const testBatch = users.slice(0);
+		return testBatch.map((user: User, index: number) => (
+			<Card user={user} key={index} />
+		));
+	}
+	return <div className={styles.container}>{printUsers()}</div>;
 };
 
 export default Users;
