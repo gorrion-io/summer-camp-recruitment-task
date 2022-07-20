@@ -1,0 +1,11 @@
+.adress_info {
+  width: 288px;
+  height: 20px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #303030;
+  margin: 5px 0 0 16px;
+}

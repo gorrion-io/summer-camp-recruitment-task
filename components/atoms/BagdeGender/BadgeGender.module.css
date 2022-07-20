@@ -1,0 +1,17 @@
+.badge {
+  display: inline-block;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #065f46;
+  padding: 6px 12px;
+  min-width: 62px;
+  height: 32px;
+  background: #ecfdf5;
+  border: 1px solid #d1fae5;
+  border-radius: 4px;
+}
